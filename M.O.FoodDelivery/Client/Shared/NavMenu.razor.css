@@ -1,0 +1,140 @@
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand {
+    font-size: 1.1rem;
+}
+
+.oi {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.oi-magnifying-glass {
+    color: #000000;
+}
+
+.nav-item {
+    color: #FFFFFF;
+    font-size: 0.9rem;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.nav-item ::deep a {
+    color: #FFFFFF;
+    border-radius: 4px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    line-height: 3rem;
+}
+
+    .nav-item ::deep a.active {
+        background-color: rgba(255,255,255,0.25);
+        color: white;
+    }
+
+    .nav-item ::deep a:hover {
+        background-color: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #488541;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+    /* Change color of dropdown links on hover */
+    .dropdown-menu a:hover {
+        background-color: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropdown-menu {
+        background-color: #488541;
+    }
+
+.logo {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 42px;
+}
+
+.button-signinout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    color: #FFFFFF;
+    gap: 10px;
+    width: 96px;
+    height: 49px;
+    background: #202020;
+    border-radius: 10px;
+    margin-left: 1rem;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    gap: 10px;
+    width: 450px;
+    height: 49px;
+    background: #FFFFFF;
+    opacity: 0.75;
+    border: 1px solid #808080;
+    border-radius: 10px;
+}
+
+input, input:focus {
+    border: none;
+    font-family: FontAwesome;
+}
+
+@media (min-width: 780px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .collapse {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}
