@@ -8,8 +8,13 @@
     flex: 1;
 }
 
+.orange-bg {
+    background-color: rgba(252, 128, 25, 1);
+}
+
 .navbar {
-    background-color: #FFFFFFF;
+    background-color: #FFFFFF;
+    z-index: 1000000000;
 }
 
     .navbar .nav-item:not(:last-child) {

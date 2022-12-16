@@ -53,24 +53,9 @@
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private bool expandShopNavSetting;
-    private bool expandBrandNavSetting;
-
-    string baseMenuClass = "navbar-collapse d-sm-inline-flex flex-sm-row-reverse";
-
-
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
-
-        if (!expandShopNavSetting)
-        {
-            collapseNavMenu = !collapseNavMenu;
-        }
-        if (!expandBrandNavSetting)
-        {
-            collapseNavMenu = !collapseNavMenu;
-        }
     }
 
     private async Task BeginSignOut(MouseEventArgs args)
