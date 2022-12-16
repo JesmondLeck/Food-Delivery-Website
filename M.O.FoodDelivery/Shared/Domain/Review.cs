@@ -8,7 +8,7 @@ namespace M.O.FoodDelivery.Shared.Domain
 {
     public class Review : BaseDomainModel
     {
-        public Boolean IsFavorite { get; set; }
+        public bool IsFavorite { get; set; }
         public string Feedback { get; set; }
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
