@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M.O.FoodDelivery.Server", "M.O.FoodDelivery\Server\M.O.FoodDelivery.Server.csproj", "{904D9D6C-1313-4A6D-BF6E-743EEE54F6A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M.O.FoodDelivery.Server", "M.O.FoodDelivery\Server\M.O.FoodDelivery.Server.csproj", "{904D9D6C-1313-4A6D-BF6E-743EEE54F6A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M.O.FoodDelivery.Client", "M.O.FoodDelivery\Client\M.O.FoodDelivery.Client.csproj", "{A4AD483B-B2D9-4C71-B54A-7E114CD1F989}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M.O.FoodDelivery.Client", "M.O.FoodDelivery\Client\M.O.FoodDelivery.Client.csproj", "{A4AD483B-B2D9-4C71-B54A-7E114CD1F989}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M.O.FoodDelivery.Shared", "M.O.FoodDelivery\Shared\M.O.FoodDelivery.Shared.csproj", "{FD0D6B8B-96DA-4829-A159-C9EA2205F64C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M.O.FoodDelivery.Shared", "M.O.FoodDelivery\Shared\M.O.FoodDelivery.Shared.csproj", "{FD0D6B8B-96DA-4829-A159-C9EA2205F64C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

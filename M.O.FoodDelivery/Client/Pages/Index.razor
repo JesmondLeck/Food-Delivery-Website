@@ -1,7 +1,140 @@
 ﻿@page "/"
+<!--Introduction Section-->
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-6 text-left justify-content-center align-items-center">
+            <h1 class="slogan">
+                We Deliver Premium Quality Food Right At Your Doorsteps
+            </h1>
+            <h5 class="description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </h5>
+        </div>
+        <div class="col-md-6 text-center justify-content-center align-content-center">
+            <img class="description-img" src="images/cooked_food_in_black_ceramic_bowls.jpg" alt="" />
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
 
-<h1>Hello, world!</h1>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <!-- Nearby Restaurants Section-->
+        <div class="col-md-6 text-left justify-content-center align-items-center">
+            <h4 class="categories">
+                Nearby Restaurants
+            </h4>
+            <div class="row">
+                <RestaurantCard RestaurantImage="images/ramachandra_parlour.jpeg"
+                                RestaurantName="Ramachandra Parlour"
+                                CuisineType="South Indian"
+                                Rating="4.0"
+                                PricePerPax="$20 for 2"
+                                DeliveryTime="30min">
+                </RestaurantCard>
 
-Welcome to your new app.
+                <RestaurantCard RestaurantImage="images/uma_parlour.jpeg"
+                                RestaurantName="Uma Parlour - Pure Vegetarian"
+                                CuisineType="South Indian"
+                                Rating="3.2"
+                                PricePerPax="$15 for 2"
+                                DeliveryTime="15min">
+                </RestaurantCard>
+                <RestaurantCard RestaurantImage="images/swap_diet_meal.jpeg"
+                                RestaurantName="Swap - Diet Meal Box"
+                                CuisineType="Healthy Food, Salads"
+                                Rating="4.5"
+                                PricePerPax="$13 for 2"
+                                DeliveryTime="15min">
+                </RestaurantCard>
+                <RestaurantCard RestaurantImage="images/the_good_bowl.jpeg"
+                                RestaurantName="The Good Bowl - Traditional Bowls"
+                                CuisineType="North Indian, Punjabi"
+                                Rating="4.8"
+                                PricePerPax="$15 for 2"
+                                DeliveryTime="25min">
+                </RestaurantCard>
+            </div>
+        </div>
+        <!-- Recommended Food Items Section-->
+        <div class="col-md-6 text-left justify-content-center align-items-center">
+            <h4 class="categories">
+                Recommended Food Items
+            </h4>
+            <div class="row">
+                <DishCard DishImage="images/paneer_tikka_rice_bowl.jpeg"
+                          DishName="Paneer Tikka Rice Bowl"
+                          RestaurantName="The Good Bowl"
+                          Price="$8"
+                          DeliveryTime="12min">
+                </DishCard>
+                <DishCard DishImage="images/aloo_paratha_curd_meal.jpeg"
+                          DishName="Aloo Paratha Curd Meal (2 pcs)"
+                          RestaurantName="Lunch Box"
+                          Price="$9"
+                          DeliveryTime="45min">
+                </DishCard>
+                <DishCard DishImage="images/baked_pizza_wrap_vegetarian.jpeg"
+                          DishName="Baked Pizza Wrap - Vegetarian"
+                          RestaurantName="Faasos - Wraps & Rolls"
+                          Price="$14"
+                          DeliveryTime="21min">
+                </DishCard>
+                <DishCard DishImage="images/mixed_veg_fried_rice.jpeg"
+                          DishName="Mixed Veg Fried Rice with dry fruits"
+                          RestaurantName="MFC Restaurant"
+                          Price="$8"
+                          DeliveryTime="30min">
+                </DishCard>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <!--Search By Restaruant Section-->
+        <div class="w-100 h-100 mt-5 p-5 text-white orange-bg text-center">
+            Search By Restaurant <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            <form class="d-inline-flex" action="/">
+                <input class="search" type="text" placeholder="Enter item or restaurant &#xF002">
+                <input type="submit" hidden>
+                <button type="submit" class="button-signinout">Search Now</button>
+            </form>
+        </div>
+        <br/>
+        <br/>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+        <!--What's On Your Mind section-->
+        <div class="mt-5">
+            <h3 class="ml-2 text-left" style="font-size: 30px;">What's on your mind</h3>
+            <div class="mt-5 vw-90 d-flex flex-wrap justify-content-around align-content-center">
+                <div class="col-2 text-center">
+                    <img src="images/sandwich.jpeg" class="img-same-dim rounded-circle" alt="" />
+                    <h5 class="mt-2 text-black">Sandwich</h5>
+                </div>
+                <div class="col-2 text-center">
+                    <img src="images/north_indian_thalis.jpeg" class="img-same-dim rounded-circle" alt="" />
+                    <h5 class="mt-2 text-black">North Indian Thalis</h5>
+                </div>
+                <div class="col-2 text-center">
+                    <img src="images/egg_breakfast.jpeg" class="img-same-dim rounded-circle" alt="" />
+                    <h5 class="mt-2 text-black">Egg Breakfast</h5>
+                </div>
+                <div class="col-2 text-center">
+                    <img src="images/rolls_and_puff.jpeg" class="img-same-dim rounded-circle" alt="" />
+                    <h5 class="mt-2 text-black">Rolls & Puffs</h5>
+                </div>
+                <div class="col-2 text-center">
+                    <img src="images/salads.jpeg" class="img-same-dim rounded-circle" alt="" />
+                    <h5 class="mt-2 text-black">Salads</h5>
+                </div>
+                <div class="col-2 text-center">
+                    <img src="images/biryani.jpeg" class="img-same-dim rounded-circle" alt="" />
+                    <h5 class="mt-2 text-black">Biryani Box</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
