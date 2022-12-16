@@ -10,5 +10,6 @@ namespace M.O.FoodDelivery.Shared.Domain
     {
         public DateTime PaidOn { get; set; }
         public string Type { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }

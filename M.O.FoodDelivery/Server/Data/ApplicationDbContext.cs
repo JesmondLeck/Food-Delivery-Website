@@ -18,7 +18,7 @@ namespace M.O.FoodDelivery.Server.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
-        public DbSet<User> _Users { get; set; }
+        public DbSet<User> Userss { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
