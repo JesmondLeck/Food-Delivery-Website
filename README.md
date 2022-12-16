@@ -1,3 +1,3 @@
 # Food-Delivery-Website
 
-Hello World by Tan Yi Hua
+This is the Food Delivery Website for our FullSD project.
