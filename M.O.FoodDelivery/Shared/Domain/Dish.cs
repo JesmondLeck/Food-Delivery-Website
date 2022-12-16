@@ -16,5 +16,6 @@ namespace M.O.FoodDelivery.Shared.Domain
         public string Options { get; set; }
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
     }
 }

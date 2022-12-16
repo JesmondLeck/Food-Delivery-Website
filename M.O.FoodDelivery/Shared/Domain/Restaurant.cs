@@ -14,5 +14,7 @@ namespace M.O.FoodDelivery.Shared.Domain
         public string Address { get; set; }
         public int OwnerId { get; set; }
         public virtual User User { get; set; }
+        public virtual List<Review> Reviews { get; set; }
+        public virtual List<Dish> Dishes { get; set; }
     }
 }

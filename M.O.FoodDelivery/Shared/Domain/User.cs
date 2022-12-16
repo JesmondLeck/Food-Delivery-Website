@@ -15,5 +15,8 @@ namespace M.O.FoodDelivery.Shared.Domain
         public string Email { get; set; }
         public string Password { get; set; }
         public string Address { get; set; }
+        public List<Review> Reviews { get; set; }
+        public List<Restaurant> Restaurants { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }

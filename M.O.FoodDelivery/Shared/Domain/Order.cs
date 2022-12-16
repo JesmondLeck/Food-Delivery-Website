@@ -13,5 +13,6 @@ namespace M.O.FoodDelivery.Shared.Domain
         public virtual User User { get; set; }
         public int PaymentId { get; set; }
         public virtual Payment Payment { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
     }
 }
