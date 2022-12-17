@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace M.O.FoodDelivery.Server.Migrations
 {
-    public partial class SeededAndModifyApplicationUser : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,11 +28,15 @@ namespace M.O.FoodDelivery.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProfileImageUri = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IC = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -108,29 +112,6 @@ namespace M.O.FoodDelivery.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PersistedGrants", x => x.Key);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProfileImageUri = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IC = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -240,6 +221,34 @@ namespace M.O.FoodDelivery.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Restaurants",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUri = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OwnerId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Restaurants", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Restaurants_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -257,44 +266,17 @@ namespace M.O.FoodDelivery.Server.Migrations
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Orders_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Orders_Payments_PaymentId",
                         column: x => x.PaymentId,
                         principalTable: "Payments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Orders_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Restaurants",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImageUri = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OwnerId = table.Column<int>(type: "int", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Restaurants", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Restaurants_User_OwnerId",
-                        column: x => x.OwnerId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -336,6 +318,7 @@ namespace M.O.FoodDelivery.Server.Migrations
                     Feedback = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RestaurantId = table.Column<int>(type: "int", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -345,17 +328,17 @@ namespace M.O.FoodDelivery.Server.Migrations
                 {
                     table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Reviews_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Reviews_Restaurants_RestaurantId",
                         column: x => x.RestaurantId,
                         principalTable: "Restaurants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reviews_User_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -395,31 +378,31 @@ namespace M.O.FoodDelivery.Server.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "f0035284-48a4-429c-af93-5bb6c1c3a039", "Owner", "OWNER" },
-                    { 2, "92202182-0caf-4f2e-9432-4aad2c9f682e", "Customer", "CUSTOMER" }
+                    { 1, "c09842d6-8636-4653-8291-9ac9b0c1884a", "Owner", "OWNER" },
+                    { 2, "532f4f69-3e4d-4fff-95ba-c1d67d3fc4f7", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "IC", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileImageUri", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "CreatedBy", "DateCreated", "DateUpdated", "Email", "EmailConfirmed", "IC", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileImageUri", "SecurityStamp", "TwoFactorEnabled", "UpdatedBy", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, "Tampines North Street 123 Blk 45 #6-759", "0f85ff8e-02e1-4320-973a-dbcaa92fa685", "thomasdoe@gmail.com", false, "S8774367G", false, null, "Thomas Doe", null, null, "AQAAAAEAACcQAAAAECdPuIyvrncdIsh2E7yg7Pw9RpirixCU0NDERD+GJl7e6KDKaF+GgGU1WuBTO5D5+A==", null, null, false, null, null, false, null },
-                    { 2, 0, "113 Bedok North Street #5-102", "4046bc5e-e5e2-4568-948d-0945ffe5cbc4", "samlee@gmail.com", false, "S1234567F", false, null, "Samantha Lee", null, null, "AQAAAAEAACcQAAAAELr+H0vmGrAl9KzWtJoARAuNI7ywt0UElxtJ9kAMneS0k7AUASzoziyMB3qga1rxiQ==", null, null, false, null, null, false, null }
+                    { 1, 0, "Tampines North Street 123 Blk 45 #6-759", "f5f74060-3c47-418e-82a4-1b6a6092c127", "System", new DateTime(2022, 12, 17, 16, 38, 48, 603, DateTimeKind.Local).AddTicks(7996), new DateTime(2022, 12, 17, 16, 38, 48, 606, DateTimeKind.Local).AddTicks(2366), "thomasdoe@gmail.com", false, "S8774367G", false, null, "Thomas Doe", null, null, "AQAAAAEAACcQAAAAEOu+d5faffBM+fCaoEWP9M+Mk3LEKRq+Nr7p0ObRplMgfzg/bxQUB3P1ME5Wpf4ZHw==", null, null, false, null, null, false, "System", null },
+                    { 2, 0, "113 Bedok North Street #5-102", "9ae3182a-38b1-4100-83fd-80e635ed9555", "System", new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(539), new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(544), "samlee@gmail.com", false, "S1234567F", false, null, "Samantha Lee", null, null, "AQAAAAEAACcQAAAAEMw5NmbvgxyRJ1pAQ/l9IlywRSq26AKYP9XpKtHFBH0A5vrpbO7IndmJnKLtqy5fTg==", null, null, false, null, null, false, "System", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Payments",
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PaidOn", "Type", "UpdatedBy" },
-                values: new object[] { 1, "System", new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(396), new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(401), new DateTime(2022, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cashless", "System" });
+                values: new object[] { 1, "System", new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(4177), new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(4364), new DateTime(2022, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cashless", "System" });
 
             migrationBuilder.InsertData(
-                table: "User",
-                columns: new[] { "Id", "Address", "CreatedBy", "DateCreated", "DateUpdated", "Email", "IC", "Name", "Password", "ProfileImageUri", "Role", "UpdatedBy" },
+                table: "Restaurants",
+                columns: new[] { "Id", "Address", "CreatedBy", "DateCreated", "DateUpdated", "Description", "ImageUri", "Name", "OwnerId", "UpdatedBy", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Tampines North Street 123 Blk 45 #6-759", "System", new DateTime(2022, 12, 17, 12, 10, 50, 700, DateTimeKind.Local).AddTicks(7496), new DateTime(2022, 12, 17, 12, 10, 50, 704, DateTimeKind.Local).AddTicks(3236), "thomasdoe@gmail.com", "S8774367G", "Thomas Doe", "AQAAAAEAACcQAAAAEOlchVtE/F19OxA+MzLfzTDW+1NrNkr/GO1Tz5/RQO+p30YRbcxogIvUbi9LSWverw==", null, "Owner", "System" },
-                    { 2, "113 Bedok North Street #5-102", "System", new DateTime(2022, 12, 17, 12, 10, 50, 705, DateTimeKind.Local).AddTicks(7728), new DateTime(2022, 12, 17, 12, 10, 50, 705, DateTimeKind.Local).AddTicks(7732), "samlee@gmail.com", "S1234567F", "Samantha Lee", "AQAAAAEAACcQAAAAEPLKLZBsmI9T6YRTQHT9M2SdaQO/KmpBkJXmeSESLg2zQ4lZmNzIXxrK5fuLGsfXoA==", null, "Customer", "System" }
+                    { 1, "Tampines Mall #1-123", "System", new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(1456), new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(1462), "North Indian, Punjabi", null, "LunchBox - Meals, Rice Bowls and Thalis", 1, "System", null },
+                    { 2, "Northpoint #2-123", "System", new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(1465), new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(1466), "Southern Indian", null, "Fasso - Wraps & Bowls", 1, "System", null }
                 });
 
             migrationBuilder.InsertData(
@@ -432,43 +415,34 @@ namespace M.O.FoodDelivery.Server.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Orders",
-                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PaymentId", "Status", "UpdatedBy", "UserId" },
-                values: new object[] { 1, "System", new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(2644), new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(2647), 1, "Preparation", "System", 2 });
-
-            migrationBuilder.InsertData(
-                table: "Restaurants",
-                columns: new[] { "Id", "Address", "CreatedBy", "DateCreated", "DateUpdated", "Description", "ImageUri", "Name", "OwnerId", "UpdatedBy" },
-                values: new object[,]
-                {
-                    { 1, "Tampines Mall #1-123", "System", new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(5733), new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(5738), "North Indian, Punjabi", null, "LunchBox - Meals, Rice Bowls and Thalis", 1, "System" },
-                    { 2, "Northpoint #2-123", "System", new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(5741), new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(5742), "Southern Indian", null, "Fasso - Wraps & Bowls", 1, "System" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Dishes",
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Description", "ImageUri", "Name", "Options", "Price", "RestaurantId", "Type", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9423), new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9427), "Brunch: One meal to rule them all! Grab this mega saver combo with your choice of 2 veg wraps, Aloo Paratha (2 pcs), chole and Curd lunchbox and 2 choco lava cakes. This is just bliss on a plate!", null, "Brunch for 2 - Veg", "NIL", 12.0, 1, "Punjabi", "System" },
-                    { 2, "System", new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9430), new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9431), "Juicy chicken mixed with curry and sausages.", null, "Royal Chicken Rice Bowl (Jumbo)", "NIL", 12.0, 1, "South Indian", "System" },
-                    { 3, "System", new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9433), new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9434), null, null, "Paneer Signature Rice Bowl (Regular)", "NIL", 10.0, 2, "South Indian", "System" }
+                    { 1, "System", new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8970), new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8979), "Brunch: One meal to rule them all! Grab this mega saver combo with your choice of 2 veg wraps, Aloo Paratha (2 pcs), chole and Curd lunchbox and 2 choco lava cakes. This is just bliss on a plate!", null, "Brunch for 2 - Veg", "NIL", 12.0, 1, "Punjabi", "System" },
+                    { 2, "System", new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8983), new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8984), "Juicy chicken mixed with curry and sausages.", null, "Royal Chicken Rice Bowl (Jumbo)", "NIL", 12.0, 1, "South Indian", "System" },
+                    { 3, "System", new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8987), new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8988), null, null, "Paneer Signature Rice Bowl (Regular)", "NIL", 10.0, 2, "South Indian", "System" }
                 });
 
             migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "PaymentId", "Status", "UpdatedBy", "UserId" },
+                values: new object[] { 1, "System", new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(7743), new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(7748), 1, "Preparation", "System", 2 });
+
+            migrationBuilder.InsertData(
                 table: "Reviews",
-                columns: new[] { "Id", "CreatedBy", "CustomerId", "DateCreated", "DateUpdated", "Feedback", "IsFavorite", "RestaurantId", "UpdatedBy" },
-                values: new object[] { 1, "System", 2, new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(4636), new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(4641), null, true, 1, "System" });
+                columns: new[] { "Id", "CreatedBy", "CustomerId", "DateCreated", "DateUpdated", "Feedback", "IsFavorite", "RestaurantId", "UpdatedBy", "UserId" },
+                values: new object[] { 1, "System", 2, new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(6407), new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(6415), null, true, 1, "System", null });
 
             migrationBuilder.InsertData(
                 table: "OrderItems",
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "DishId", "OrderId", "OrderQty", "Rating", "UpdatedBy" },
-                values: new object[] { 1, "System", new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(2259), new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(2288), 1, 1, 1, 0f, "System" });
+                values: new object[] { 1, "System", new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(2895), new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(2901), 1, 1, 1, 0f, "System" });
 
             migrationBuilder.InsertData(
                 table: "OrderItems",
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "DishId", "OrderId", "OrderQty", "Rating", "UpdatedBy" },
-                values: new object[] { 2, "System", new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(2291), new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(2292), 3, 1, 1, 0f, "System" });
+                values: new object[] { 2, "System", new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(2904), new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(2905), 3, 1, 1, 0f, "System" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -561,19 +535,19 @@ namespace M.O.FoodDelivery.Server.Migrations
                 columns: new[] { "SubjectId", "SessionId", "Type" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Restaurants_OwnerId",
+                name: "IX_Restaurants_UserId",
                 table: "Restaurants",
-                column: "OwnerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_CustomerId",
-                table: "Reviews",
-                column: "CustomerId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_RestaurantId",
                 table: "Reviews",
                 column: "RestaurantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_UserId",
+                table: "Reviews",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -609,9 +583,6 @@ namespace M.O.FoodDelivery.Server.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Dishes");
 
             migrationBuilder.DropTable(
@@ -624,7 +595,7 @@ namespace M.O.FoodDelivery.Server.Migrations
                 name: "Payments");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "AspNetUsers");
         }
     }
 }
