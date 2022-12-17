@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace M.O.FoodDelivery.Shared.Domain
 {
     public class User : BaseDomainModel
