@@ -22,7 +22,7 @@ int>
             operationalStoreOptions)
         {
         }
-        public DbSet<ApplicationUser> Userss { get; set; }
+        //Users are stored in AspNet.Users
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
@@ -34,7 +34,6 @@ int>
         {
             base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration(new ApplicationUserSeedConfiguration());
             builder.ApplyConfiguration(new RoleSeedConfiguration());
             builder.ApplyConfiguration(new UserRoleSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfiguration());

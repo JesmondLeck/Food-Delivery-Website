@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using M.O.FoodDelivery.Shared.Domain;
 
 namespace M.O.FoodDelivery.Server.Areas.Identity.Pages.Account
 {
@@ -24,17 +25,21 @@ namespace M.O.FoodDelivery.Server.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<ApplicationRole> roleManager
+        )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -61,6 +66,23 @@ namespace M.O.FoodDelivery.Server.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [StringLength(9, ErrorMessage = "The IC Number must be 9 characters long", MinimumLength = 9)]
+            [Display(Name = "IC No.")]
+            public string IC { get; set; }
+
+            [Required]
+            [StringLength(30, ErrorMessage = "The name can only be up to 30 characters long")]
+            [Display(Name = "Name")]
+            public string Name { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "The address can only be up to 100 characters long")]
+            [Display(Name = "Address")]
+            public string Address { get; set; }
+
+            public bool IsOwner { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -75,10 +97,37 @@ namespace M.O.FoodDelivery.Server.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Name, 
+                                                 Name = Input.Name, 
+                                                 Email = Input.Email,
+                                                 Password = Input.Password,
+                                                 Address = Input.Address,
+                                                 IC = Input.IC
+                                                };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    if (!await _roleManager.RoleExistsAsync("Customer"))
+                    {
+                        await _roleManager.CreateAsync(new ApplicationRole("Customer"));
+                    }
+
+                    if (!await _roleManager.RoleExistsAsync("Owner"))
+                    {
+                        await _roleManager.CreateAsync(new ApplicationRole("Owner"));
+                    }
+
+                    if (!Input.IsOwner)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Customer");
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, "Owner");
+                        returnUrl = Url.Content("~/registerRestaurant");
+                    }
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

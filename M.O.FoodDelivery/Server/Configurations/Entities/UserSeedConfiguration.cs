@@ -10,18 +10,19 @@ using System.Threading.Tasks;
 
 namespace M.O.FoodDelivery.Server.Configurations.Entities
 {
-    public class UserSeedConfiguration : IEntityTypeConfiguration<User>
+    public class UserSeedConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            var hasher = new PasswordHasher<User>();
+            var hasher = new PasswordHasher<ApplicationUser>();
             builder.HasData(
-                 new User
+                 new ApplicationUser
                  {
                      Id = 1,
-                     Name = "Thomas Doe",
+                     Name = "Thomas",
+                     UserName = "Thomas",
                      ProfileImageUri = null,
-                     Role = "Owner",
+                     //Role = "Owner",
                      IC = "S8774367G",
                      Email = "thomasdoe@gmail.com",
                      Password = hasher.HashPassword(null, "123456"),
@@ -31,12 +32,13 @@ namespace M.O.FoodDelivery.Server.Configurations.Entities
                      CreatedBy = "System",
                      UpdatedBy = "System"
                  },
-                 new User
+                 new ApplicationUser
                  {
                      Id = 2,
-                     Name = "Samantha Lee",
+                     Name = "Samantha",
+                     UserName = "Samantha",
                      ProfileImageUri = null,
-                     Role = "Customer",
+                     //Role = "Customer",
                      IC = "S1234567F",
                      Email = "samlee@gmail.com",
                      Password = hasher.HashPassword(null, "abcdef1234"),

@@ -21,11 +21,9 @@
                         </form>
                     </li>
                     <li class="nav-item mr-auto">
-                        <button class="button-signinout">
-                            <NavLink href="authentication/logout" Match="NavLinkMatch.All" @onclick="BeginSignOut">
-                                Log Out
-                            </NavLink>
-                        </button>                
+                        <NavLink class="btn btn-dark ml-2" href="authentication/logout" Match="NavLinkMatch.All" @onclick="BeginSignOut">
+                            Log Out
+                        </NavLink>
                     </li>
                 </Authorized>
                 <NotAuthorized>
@@ -36,11 +34,9 @@
                         </form>
                     </li>
                     <li class="nav-item mr-auto">
-                        <button class="button-signinout">
-                            <NavLink href="authentication/login" Match="NavLinkMatch.All">
-                                Sign In
-                            </NavLink>
-                        </button>
+                        <NavLink class="btn btn-dark ml-2" href="authentication/login" Match="NavLinkMatch.All">
+                            Sign In
+                        </NavLink>
                     </li>
                 </NotAuthorized>
             </AuthorizeView>

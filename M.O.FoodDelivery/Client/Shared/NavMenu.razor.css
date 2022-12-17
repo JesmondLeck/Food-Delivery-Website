@@ -93,19 +93,8 @@
     line-height: 42px;
 }
 
-.button-signinout {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    color: #FFFFFF;
-    gap: 10px;
-    width: 96px;
-    height: 49px;
-    background: #202020;
-    border-radius: 10px;
-    margin-left: 1rem;
+.btn {
+    border-radius: 5px;
 }
 
 .search {

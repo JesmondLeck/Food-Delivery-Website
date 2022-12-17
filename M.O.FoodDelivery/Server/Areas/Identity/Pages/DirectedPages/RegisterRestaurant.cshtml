@@ -1,0 +1,38 @@
+﻿@page "/registerRestaurant"
+@model RegisterRestaurantModel
+@{
+    ViewData["Title"] = "Create Restaurant";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label asp-for="Restaurant.Name"></label>
+                    <input asp-for="Restaurant.Name" class="form-control" />
+                    <span asp-validation-for="Restaurant.Name" class="text-danger"></span>
+                </div>
+                <div class="col-md-12 form-group">
+                    <label asp-for="Restaurant.Description"></label>
+                    <textarea asp-for="Restaurant.Description" class="form-control h-75"></textarea>
+                    <span asp-validation-for="Restaurant.Description" class="text-danger"></span>
+                </div>
+                <div class="col-md-12 form-group">
+                    <label asp-for="Restaurant.Address"></label>
+                    <input asp-for="Restaurant.Address" class="form-control" />
+                    <span asp-validation-for="Restaurant.Address" class="text-danger"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

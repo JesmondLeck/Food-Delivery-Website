@@ -1,4 +1,5 @@
-﻿using System;
+﻿using M.O.FoodDelivery.Server.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,8 +15,8 @@ namespace M.O.FoodDelivery.Shared.Domain
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
 
-        [ForeignKey("User")]
+        [ForeignKey("ApplicationUser")]
         public int? CustomerId { get; set; }
-        public virtual User User { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }
