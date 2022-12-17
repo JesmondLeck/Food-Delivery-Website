@@ -1,5 +1,6 @@
 using M.O.FoodDelivery.Server.Data;
 using M.O.FoodDelivery.Server.Models;
+using M.O.FoodDelivery.Shared.Domain;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,8 +35,8 @@ namespace M.O.FoodDelivery.Server
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services
-                .AddIdentity<ApplicationUser, IdentityRole<int>>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddRoles<IdentityRole<int>>()
+                .AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();

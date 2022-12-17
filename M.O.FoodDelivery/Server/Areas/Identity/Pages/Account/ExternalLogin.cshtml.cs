@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using M.O.FoodDelivery.Shared.Domain;
 
 namespace M.O.FoodDelivery.Server.Areas.Identity.Pages.Account
 {
