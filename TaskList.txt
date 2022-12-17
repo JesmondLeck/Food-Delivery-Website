@@ -1,2 +1,0 @@
- - making of a new branch and pull request | Status: in process
- - merging of a new branch | Status: in process
