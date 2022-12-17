@@ -8,7 +8,7 @@ namespace M.O.FoodDelivery.Shared.Domain
 {
     public class OrderItem : BaseDomainModel
     {
-        public string OrderQty { get; set; }
+        public int OrderQty { get; set; }
         public float Rating { get; set; }
         public int DishId { get; set; }
         public virtual Dish Dish { get; set; }
