@@ -10,41 +10,33 @@ using System.Threading.Tasks;
 
 namespace M.O.FoodDelivery.Server.Configurations.Entities
 {
-    public class UserSeedConfiguration : IEntityTypeConfiguration<User>
+    public class ApplicationUserSeedConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            var hasher = new PasswordHasher<User>();
+            var hasher = new PasswordHasher<ApplicationUser>();
             builder.HasData(
-                 new User
+                 new ApplicationUser
                  {
                      Id = 1,
                      Name = "Thomas Doe",
                      ProfileImageUri = null,
-                     Role = "Owner",
+                     //Role = "Owner",
                      IC = "S8774367G",
                      Email = "thomasdoe@gmail.com",
                      Password = hasher.HashPassword(null, "123456"),
                      Address = "Tampines North Street 123 Blk 45 #6-759",
-                     DateCreated = DateTime.Now,
-                     DateUpdated = DateTime.Now,
-                     CreatedBy = "System",
-                     UpdatedBy = "System"
                  },
-                 new User
+                 new ApplicationUser
                  {
                      Id = 2,
                      Name = "Samantha Lee",
                      ProfileImageUri = null,
-                     Role = "Customer",
+                     //Role = "Customer",
                      IC = "S1234567F",
                      Email = "samlee@gmail.com",
                      Password = hasher.HashPassword(null, "abcdef1234"),
                      Address = "113 Bedok North Street #5-102",
-                     DateCreated = DateTime.Now,
-                     DateUpdated = DateTime.Now,
-                     CreatedBy = "System",
-                     UpdatedBy = "System"
                  }
                  );
         }
