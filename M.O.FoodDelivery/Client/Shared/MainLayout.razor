@@ -1,15 +1,57 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="main">
-    <div class="navbar">
-        <NavMenu />
-    </div>
+<AuthorizeView>
+    <Authorized>
+        @if (context.User.IsInRole("Customer"))
+        {
+            <div class="main">
+                <div class="navbar">
+                    <NavMenu />
+                </div>
 
-    <div class="content px-4">
-        @Body
-    </div>
+                <div class="content px-4">
+                    @Body
+                </div>
 
-    <div class="w-100 h-75 mt-5 p-5 text-white orange-bg text-center d-flex justify-content-between align-content-center">
-        <Footer />
-    </div>
-</div>
+                <div class="w-100 h-75 mt-5 p-5 text-white orange-bg text-center d-flex justify-content-between align-content-center">
+                    <Footer />
+                </div>
+            </div>
+        }
+        @if (context.User.IsInRole("Owner"))
+        {
+            <div class="page">
+                <div class="row">
+                    <div class="sidebar position-sticky">
+                        <NavMenu />
+                    </div>
+
+                    <div class="main">
+                        <div class="content px-4">
+                            @Body
+                        </div>
+                        <div class="w-100 mt-5 p-5 text-white orange-bg text-center d-flex justify-content-between align-content-center">
+                            <Footer />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </Authorized>
+    <NotAuthorized>
+        <div class="main">
+            <div class="navbar">
+                <NavMenu />
+            </div>
+
+            <div class="content px-4">
+                @Body
+            </div>
+
+            <div class="w-100 h-75 mt-5 p-5 text-white orange-bg text-center d-flex justify-content-between align-content-center">
+                <Footer />
+            </div>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>

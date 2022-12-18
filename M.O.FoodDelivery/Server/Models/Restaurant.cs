@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M.O.FoodDelivery.Shared.Domain
+namespace M.O.FoodDelivery.Server.Models
 {
     public class Restaurant : BaseDomainModel
     { 
@@ -17,7 +17,7 @@ namespace M.O.FoodDelivery.Shared.Domain
 
         [ForeignKey("ApplicationUser")]
         public int? OwnerId { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser Owner { get; set; }
         public virtual List<Review> Reviews { get; set; }
         public virtual List<Dish> Dishes { get; set; }
     }

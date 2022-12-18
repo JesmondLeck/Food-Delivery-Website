@@ -11,6 +11,10 @@
     font-size: 1.1rem;
 }
 
+ul {
+    list-style: none;
+}
+
 .oi {
     width: 2rem;
     font-size: 1.1rem;
@@ -91,10 +95,24 @@
     font-weight: 700;
     font-size: 28px;
     line-height: 42px;
+    color: #000000;
+}
+
+.logo-white {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 42px;
+    color: #FFFFFF;
 }
 
 .btn {
     border-radius: 5px;
+}
+
+.search-position{
+    margin-right: 1rem;
 }
 
 .search {
@@ -115,6 +133,28 @@
 input, input:focus {
     border: none;
     font-family: FontAwesome;
+}
+
+.fa-nav {
+    color: black;
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.owner-background {
+    background-color: black;
+}
+
+li.active {
+    background-color: rgba(252, 128, 25, 1);
+}
+
+.rg-5{
+    column-gap:5rem;
 }
 
 @media (min-width: 780px) {

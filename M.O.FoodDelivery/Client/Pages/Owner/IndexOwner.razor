@@ -1,0 +1,30 @@
+﻿@page "/owner/home"
+
+<h3 class="slogan">Welcome<var class="variable">Thomas Doe</var>!</h3>
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-left">
+            <p class="description">
+                There are <var class="variable">10405</var> customers that have ordered from <var class="variable">Lunch - Meals, Rice Bowls and Thalis</var> so far!
+            </p>
+            <br />
+            <p class="description">
+                <var class="variable">Lunch - Meals, Rice Bowls and Thalis</var> has an average rating of <var class="variable">4.0/5</var> out of <var class="variable">136</var> ratings 
+            </p>
+            <br />
+            <p class="description">
+                <var class="variable">836</var> customers considered <var class="variable">Lunch - Meals, Rice Bowls and Thalis</var> as their favourite restaurant
+            </p>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <OwnerRestaurantCard RestaurantImage="images/ramachandra_parlour.jpeg"
+                            RestaurantName="Lunch - Meals, Rice Bowls and Thalis"
+                            OrderedBefore=" 10405"
+                            Rating=" 4.0/5 (100+ ratings)"
+                            Likes=" 836">
+            </OwnerRestaurantCard> 
+        </div>
+    </div>
+</div>
+

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace M.O.FoodDelivery.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221217083849_Init")]
-    partial class Init
+    [Migration("20221218113816_InitWithSeeds")]
+    partial class InitWithSeeds
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -156,14 +156,14 @@ namespace M.O.FoodDelivery.Server.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "c09842d6-8636-4653-8291-9ac9b0c1884a",
+                            ConcurrencyStamp = "1a8585a5-dfd2-4890-8375-7baae09430df",
                             Name = "Owner",
                             NormalizedName = "OWNER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "532f4f69-3e4d-4fff-95ba-c1d67d3fc4f7",
+                            ConcurrencyStamp = "646ae408-166f-4774-a366-3bce1cf9854f",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -268,42 +268,52 @@ namespace M.O.FoodDelivery.Server.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             Address = "Tampines North Street 123 Blk 45 #6-759",
-                            ConcurrencyStamp = "f5f74060-3c47-418e-82a4-1b6a6092c127",
+                            ConcurrencyStamp = "74f5ab6d-b39e-4d43-9f1d-0387d11539e4",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 603, DateTimeKind.Local).AddTicks(7996),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 606, DateTimeKind.Local).AddTicks(2366),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 864, DateTimeKind.Local).AddTicks(3510),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 867, DateTimeKind.Local).AddTicks(3715),
                             Email = "thomasdoe@gmail.com",
                             EmailConfirmed = false,
                             IC = "S8774367G",
                             LockoutEnabled = false,
-                            Name = "Thomas Doe",
-                            Password = "AQAAAAEAACcQAAAAEOu+d5faffBM+fCaoEWP9M+Mk3LEKRq+Nr7p0ObRplMgfzg/bxQUB3P1ME5Wpf4ZHw==",
+                            Name = "Thomas",
+                            NormalizedEmail = "THOMASDOE@GMAIL.COM",
+                            NormalizedUserName = "THOMAS",
+                            Password = "123456",
+                            PasswordHash = "AQAAAAEAACcQAAAAENEEG3Mj8NO9AnxAeBlXpij3SPITJxfx8H5xJb//1FY8tKsx3T1q7BOYnvfuUVBrhQ==",
                             PhoneNumberConfirmed = false,
+                            SecurityStamp = "5082815c-618f-4753-b44c-af90d2c5a6ca",
                             TwoFactorEnabled = false,
-                            UpdatedBy = "System"
+                            UpdatedBy = "System",
+                            UserName = "Thomas"
                         },
                         new
                         {
                             Id = 2,
                             AccessFailedCount = 0,
                             Address = "113 Bedok North Street #5-102",
-                            ConcurrencyStamp = "9ae3182a-38b1-4100-83fd-80e635ed9555",
+                            ConcurrencyStamp = "ee7bd35c-412f-4a62-8c71-1fb9111e115e",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(539),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(544),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 869, DateTimeKind.Local).AddTicks(2316),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 869, DateTimeKind.Local).AddTicks(2331),
                             Email = "samlee@gmail.com",
                             EmailConfirmed = false,
                             IC = "S1234567F",
                             LockoutEnabled = false,
-                            Name = "Samantha Lee",
-                            Password = "AQAAAAEAACcQAAAAEMw5NmbvgxyRJ1pAQ/l9IlywRSq26AKYP9XpKtHFBH0A5vrpbO7IndmJnKLtqy5fTg==",
+                            Name = "Samantha",
+                            NormalizedEmail = "SAMLEE@GMAIL.COM",
+                            NormalizedUserName = "SAMANTHA",
+                            Password = "abcdef1234",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJhNOKzk8zmwm00L4D0RmrXY0AmMp35A9v16vqftdZ85pMP29ecpOcj3Vv8/sAzgOg==",
                             PhoneNumberConfirmed = false,
+                            SecurityStamp = "9cf5875c-2d96-4a47-9d0e-b2fb5e8a51d5",
                             TwoFactorEnabled = false,
-                            UpdatedBy = "System"
+                            UpdatedBy = "System",
+                            UserName = "Samantha"
                         });
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Dish", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Dish", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -354,8 +364,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8970),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8979),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7256),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7267),
                             Description = "Brunch: One meal to rule them all! Grab this mega saver combo with your choice of 2 veg wraps, Aloo Paratha (2 pcs), chole and Curd lunchbox and 2 choco lava cakes. This is just bliss on a plate!",
                             Name = "Brunch for 2 - Veg",
                             Options = "NIL",
@@ -368,8 +378,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8983),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8984),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7272),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7273),
                             Description = "Juicy chicken mixed with curry and sausages.",
                             Name = "Royal Chicken Rice Bowl (Jumbo)",
                             Options = "NIL",
@@ -382,8 +392,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8987),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(8988),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7275),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7277),
                             Name = "Paneer Signature Rice Bowl (Regular)",
                             Options = "NIL",
                             Price = 10.0,
@@ -393,7 +403,7 @@ namespace M.O.FoodDelivery.Server.Migrations
                         });
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Order", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -434,8 +444,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(7743),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(7748),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(4739),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(4749),
                             PaymentId = 1,
                             Status = "Preparation",
                             UpdatedBy = "System",
@@ -443,7 +453,7 @@ namespace M.O.FoodDelivery.Server.Migrations
                         });
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.OrderItem", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -487,8 +497,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(2895),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(2901),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(1744),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(1752),
                             DishId = 1,
                             OrderId = 1,
                             OrderQty = 1,
@@ -499,8 +509,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(2904),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(2905),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(1757),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(1758),
                             DishId = 3,
                             OrderId = 1,
                             OrderQty = 1,
@@ -509,7 +519,7 @@ namespace M.O.FoodDelivery.Server.Migrations
                         });
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Payment", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Payment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -543,15 +553,15 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(4177),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 608, DateTimeKind.Local).AddTicks(4364),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 869, DateTimeKind.Local).AddTicks(9019),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 869, DateTimeKind.Local).AddTicks(9254),
                             PaidOn = new DateTime(2022, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Type = "Cashless",
                             UpdatedBy = "System"
                         });
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Restaurant", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Restaurant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -585,12 +595,9 @@ namespace M.O.FoodDelivery.Server.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Restaurants");
 
@@ -600,8 +607,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                             Id = 1,
                             Address = "Tampines Mall #1-123",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(1456),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(1462),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(9729),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(9738),
                             Description = "North Indian, Punjabi",
                             Name = "LunchBox - Meals, Rice Bowls and Thalis",
                             OwnerId = 1,
@@ -612,8 +619,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                             Id = 2,
                             Address = "Northpoint #2-123",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(1465),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 609, DateTimeKind.Local).AddTicks(1466),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(9743),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(9744),
                             Description = "Southern Indian",
                             Name = "Fasso - Wraps & Bowls",
                             OwnerId = 1,
@@ -621,7 +628,7 @@ namespace M.O.FoodDelivery.Server.Migrations
                         });
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Review", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Review", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -652,14 +659,11 @@ namespace M.O.FoodDelivery.Server.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("RestaurantId");
+                    b.HasIndex("CustomerId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("RestaurantId");
 
                     b.ToTable("Reviews");
 
@@ -669,8 +673,8 @@ namespace M.O.FoodDelivery.Server.Migrations
                             Id = 1,
                             CreatedBy = "System",
                             CustomerId = 2,
-                            DateCreated = new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(6407),
-                            DateUpdated = new DateTime(2022, 12, 17, 16, 38, 48, 610, DateTimeKind.Local).AddTicks(6415),
+                            DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(5714),
+                            DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(5723),
                             IsFavorite = true,
                             RestaurantId = 1,
                             UpdatedBy = "System"
@@ -790,9 +794,9 @@ namespace M.O.FoodDelivery.Server.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Dish", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Dish", b =>
                 {
-                    b.HasOne("M.O.FoodDelivery.Shared.Domain.Restaurant", "Restaurant")
+                    b.HasOne("M.O.FoodDelivery.Server.Models.Restaurant", "Restaurant")
                         .WithMany("Dishes")
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -801,9 +805,9 @@ namespace M.O.FoodDelivery.Server.Migrations
                     b.Navigation("Restaurant");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Order", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Order", b =>
                 {
-                    b.HasOne("M.O.FoodDelivery.Shared.Domain.Payment", "Payment")
+                    b.HasOne("M.O.FoodDelivery.Server.Models.Payment", "Payment")
                         .WithMany("Orders")
                         .HasForeignKey("PaymentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -820,15 +824,15 @@ namespace M.O.FoodDelivery.Server.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.OrderItem", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.OrderItem", b =>
                 {
-                    b.HasOne("M.O.FoodDelivery.Shared.Domain.Dish", "Dish")
+                    b.HasOne("M.O.FoodDelivery.Server.Models.Dish", "Dish")
                         .WithMany("OrderItems")
                         .HasForeignKey("DishId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("M.O.FoodDelivery.Shared.Domain.Order", "Order")
+                    b.HasOne("M.O.FoodDelivery.Server.Models.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -839,30 +843,30 @@ namespace M.O.FoodDelivery.Server.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Restaurant", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Restaurant", b =>
                 {
-                    b.HasOne("M.O.FoodDelivery.Server.Models.ApplicationUser", "User")
+                    b.HasOne("M.O.FoodDelivery.Server.Models.ApplicationUser", "Owner")
                         .WithMany("Restaurants")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("OwnerId");
 
-                    b.Navigation("User");
+                    b.Navigation("Owner");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Review", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Review", b =>
                 {
-                    b.HasOne("M.O.FoodDelivery.Shared.Domain.Restaurant", "Restaurant")
+                    b.HasOne("M.O.FoodDelivery.Server.Models.ApplicationUser", "Customer")
+                        .WithMany("Reviews")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("M.O.FoodDelivery.Server.Models.Restaurant", "Restaurant")
                         .WithMany("Reviews")
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("M.O.FoodDelivery.Server.Models.ApplicationUser", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserId");
+                    b.Navigation("Customer");
 
                     b.Navigation("Restaurant");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -925,22 +929,22 @@ namespace M.O.FoodDelivery.Server.Migrations
                     b.Navigation("Reviews");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Dish", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Dish", b =>
                 {
                     b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Order", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Payment", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Payment", b =>
                 {
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.Restaurant", b =>
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Restaurant", b =>
                 {
                     b.Navigation("Dishes");
 

@@ -1,0 +1,43 @@
+﻿<div class="card w-75 h-100">
+    <img src="@RestaurantImage" class="img img-fluid card-img-top" alt="">
+    <div class="card-body">
+        <h3 class="dish-name card-text">
+            @RestaurantName
+        </h3>
+        <div class="row">
+            <div class="col-12">
+                <h5 class="ordered-before">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>@OrderedBefore
+                </h5>
+            </div>
+            <div class="col-12">
+                <h5 class="rating">
+                    <i class="oi oi-star"></i> @Rating
+                </h5>
+            </div>
+            <div class="col-12">
+                <h5 class="likes">
+                    <i class="oi oi-heart"></i> @Likes
+                </h5>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string RestaurantImage { get; set; }
+
+    [Parameter]
+    public string RestaurantName { get; set; }
+
+    [Parameter]
+    public string OrderedBefore { get; set; }
+
+    [Parameter]
+    public string Rating { get; set; }
+
+    [Parameter]
+    public string Likes { get; set; }
+}

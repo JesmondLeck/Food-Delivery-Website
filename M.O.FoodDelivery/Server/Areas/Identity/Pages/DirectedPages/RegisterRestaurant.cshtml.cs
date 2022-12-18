@@ -1,5 +1,4 @@
 ﻿using M.O.FoodDelivery.Server.Models;
-using M.O.FoodDelivery.Shared.Domain;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -65,7 +64,7 @@ namespace M.O.FoodDelivery.Server.Areas.Identity.Pages.DirectedPages
                     Name = Restaurant.Name,
                     Description = Restaurant.Description,
                     Address = Restaurant.Address,
-                    User = await _userManager.GetUserAsync(HttpContext.User)
+                    Owner = await _userManager.GetUserAsync(HttpContext.User)
                 };
                 //NOTE: Modify it so that when restaurant is created, navigate to restaurant owners' home page
                 //var result = await _userManager.CreateAsync(user, Input.Password);

@@ -1,7 +1,6 @@
 ﻿using IdentityServer4.EntityFramework.Options;
 using M.O.FoodDelivery.Server.Configurations.Entities;
 using M.O.FoodDelivery.Server.Models;
-using M.O.FoodDelivery.Shared.Domain;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

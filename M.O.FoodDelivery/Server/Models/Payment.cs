@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M.O.FoodDelivery.Shared.Domain
+namespace M.O.FoodDelivery.Server.Models
 {
     public class Payment : BaseDomainModel
     {
