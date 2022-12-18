@@ -15,8 +15,14 @@ namespace M.O.FoodDelivery.Server.Models
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
 
+<<<<<<< HEAD:M.O.FoodDelivery/Server/Models/Review.cs
         [ForeignKey("ApplicationUser")]
         public int? CustomerId { get; set; }
         public virtual ApplicationUser Customer { get; set; }
+=======
+        [ForeignKey("User")]
+        public int? CustomerId { get; set; }
+        public virtual User User { get; set; }
+>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Shared/Domain/Review.cs
     }
 }

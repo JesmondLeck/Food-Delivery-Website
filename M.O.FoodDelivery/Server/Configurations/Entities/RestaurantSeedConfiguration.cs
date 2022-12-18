@@ -1,4 +1,4 @@
-﻿using M.O.FoodDelivery.Server.Models;
+using M.O.FoodDelivery.Server.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
