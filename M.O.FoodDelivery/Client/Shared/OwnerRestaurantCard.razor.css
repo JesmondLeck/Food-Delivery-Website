@@ -1,0 +1,74 @@
+﻿.card {
+    background: #000000;
+    border-radius: 10px;
+    width: auto;
+    height: max-content;
+}
+
+.img {
+    width: auto;
+    height: auto;
+    border-radius:10px;
+}
+
+.dish-name {
+    font-size: 35px;
+    line-height: 35px;
+    text-transform: capitalize;
+    color: rgba(252, 128, 25, 1);
+}
+
+.ordered-before {
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: lowercase;
+    color: #ffffff;
+}
+
+.rating {
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+}
+
+.likes {
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+}
+
+
+.oi-star {
+    color: #00ff21;
+}
+
+
+.oi-heart {
+    color: #ff0000;
+}
+
+.fa-calendar-check-o {
+    color: rgba(252, 128, 25, 1);
+}
+
+.delivery-time {
+    font-size: 12px;
+    line-height: 24px;
+    color: #202020;
+}
+
+.fa-users {
+    color: rgba(252, 128, 25, 1);
+}
+
+.price-per-pax {
+    font-size: 12px;
+    line-height: 24px;
+    color: #202020;
+}
+
+.price-tag {
+    font-size: 16px;
+    line-height: 24px;
+    color: #202020;
+}

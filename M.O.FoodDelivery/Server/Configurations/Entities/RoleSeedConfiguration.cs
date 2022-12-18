@@ -1,5 +1,4 @@
 ﻿using M.O.FoodDelivery.Server.Models;
-using M.O.FoodDelivery.Shared.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

@@ -1,6 +1,5 @@
 using M.O.FoodDelivery.Server.Data;
 using M.O.FoodDelivery.Server.Models;
-using M.O.FoodDelivery.Shared.Domain;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 
 namespace M.O.FoodDelivery.Server
@@ -42,7 +42,12 @@ namespace M.O.FoodDelivery.Server
                 .AddDefaultTokenProviders();
 
             services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+            .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(opt =>
+            {
+                opt.IdentityResources["openid"].UserClaims.Add("role");
+                opt.ApiResources.Single().UserClaims.Add("role");
+            });
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
