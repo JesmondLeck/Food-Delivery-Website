@@ -3,189 +3,50 @@
 
 @inject NavigationManager Navigation
 @inject SignOutSessionStateManager SignOutManager
-@inject IAuthorizationService AuthorizationService
-@*<nav class="navbar navbar-expand-md navbar-light container">
-        <a class="navbar-brand logo" href="">Magnum Opus</a>
-        <button class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="@NavMenuCssClass navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <AuthorizeView>
-                    <Authorized>
-                        @if (context.User.IsInRole("Customer"))
-                        {
-                            <li class="nav-item mr-auto">
-                                <form class="search-position" action="">
-                                    <input class="search" type="text" placeholder="Enter item or restaurant &#xF002">
-                                    <input type="submit" hidden>
-                                </form>
-                            </li>
-                            <li class="nav-item mr-auto">
-                                <NavLink href="order" Match="NavLinkMatch.All">
-                                    <i class="fa fa-nav fa-shopping-cart" aria-hidden="true"></i>
-                                </NavLink>
-                            </li>
-                            <li class="nav-item mr-auto">
-                                <NavLink href="profile" Match="NavLinkMatch.All">
-                                    <i class="fa fa-nav fa-user" aria-hidden="true"></i>
-                                </NavLink>
-                            </li>
-                            <li class="nav-item mr-auto">
-                                <NavLink class="btn btn-dark ml-2" href="authentication/logout" Match="NavLinkMatch.All" @onclick="BeginSignOut">
-                                    Log Out
-                                </NavLink>
-                            </li>
-                        }
-                        @if (context.User.IsInRole("Owner"))
-                        {
-                            <li class="nav-item mr-auto">
-                                <form class="search-position" action="">
-                                    <input class="search" type="text" placeholder="Enter item or restaurant &#xF002">
-                                    <input type="submit" hidden>
-                                </form>
-                            </li>
-                            <li class="nav-item mr-auto">
-                                <NavLink class="btn btn-dark ml-2" href="authentication/logout" Match="NavLinkMatch.All" @onclick="BeginSignOut">
-                                    Log Out
-                                </NavLink>
-                            </li>
-                        }
-                    </Authorized>
-                    <NotAuthorized>
-                        <li class="nav-item mr-auto">
-                            <form action="">
-                                <input class="search" type="text" placeholder="Enter item or restaurant &#xF002">
-                                <input type="submit" hidden>
-                            </form>
-                        </li>
-                        <li class="nav-item mr-auto">
-                            <NavLink class="btn btn-dark ml-2" href="authentication/login" Match="NavLinkMatch.All">
-                                Sign In
-                            </NavLink>
-                        </li>
-                    </NotAuthorized>
-                </AuthorizeView>
-            </ul>
-        </div>
-    </nav>*@
+<nav class="navbar navbar-expand-md navbar-light container">
+    <a class="navbar-brand logo" href="">Magnum Opus</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<AuthorizeView>
-    <Authorized>
-        @if (context.User.IsInRole("Customer"))
-        {
-            <nav class="navbar navbar-expand-sm navbar-black container">
-                <a class="navbar-brand logo" href="">Magnum Opus</a>
-                <button class="navbar-toggler" @onclick="ToggleNavMenu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="@NavMenuCssClass navbar-collapse">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mr-auto">
-                            <form class="search-position" action="">
-                                <input class="search" type="text" placeholder="Enter item or restaurant &#xF002">
-                                <input type="submit" hidden>
-                            </form>
-                        </li>
-                        <li class="nav-item mr-auto">
-                            <NavLink href="order" Match="NavLinkMatch.All">
-                                <i class="fa fa-nav fa-shopping-cart" aria-hidden="true"></i>
-                            </NavLink>
-                        </li>
-                        <li class="nav-item mr-auto">
-                            <NavLink href="profile" Match="NavLinkMatch.All">
-                                <i class="fa fa-nav fa-user" aria-hidden="true"></i>
-                            </NavLink>
-                        </li>
-                        <li class="nav-item mr-auto">
-                            <NavLink class="btn btn-dark ml-2" href="authentication/logout" Match="NavLinkMatch.All" @onclick="BeginSignOut">
-                                Log Out
-                            </NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        }
-        @if (context.User.IsInRole("Owner"))
-        {
-            <nav class="navbar navbar-left navbar-reverse navbar-fixed-left flex-column text-white owner-background">
-                <div class="top-row pl-4 navbar navbar-dark flex-column">
-                    <a class="navbar-brand logo-white" href="owner/home">Magnum Opus</a>
-                    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-                    <div class="d-inline-flex flex-column flex-wrap align-content-between">
-                        <ul class="nav flex-column">
-                            <li class="nav-item mt-3">
-                                <NavLink class="nav-link" href="owner/home" Match="NavLinkMatch.All">
-                                    <span class="oi oi-home" aria-hidden="true"></span> Home
-                                </NavLink>
-                            </li>
-                            <li class="nav-item mt-3">
-                                <NavLink class="nav-link" href="owner/restaurants">
-                                    <i class="bi bi-info-circle pr-3"></i> Restaurant Info
-                                </NavLink>
-                            </li>
-                            <li class="nav-item mt-3">
-                                <NavLink class="nav-link" href="owner/dishes">
-                                    <span class="oi oi-list-rich" aria-hidden="true"></span> Dishes
-                                </NavLink>
-                            </li>
-                            <li class="nav-item mt-3">
-                                <NavLink class="nav-link" href="owner/search">
-                                    <span class="oi oi-list-rich" aria-hidden="true"></span> Search
-                                </NavLink>
-                            </li>
-                        </ul>
-                        <ul class="nav flex-column">
-                            <li class="nav-item mt-3">
-                                <NavLink class="nav-link" href="profile">
-                                    <i class="oi oi-person"></i> Profile
-                                </NavLink>
-                            </li>
-                            <li class="nav-item mt-3">
-                                <NavLink class="nav-link" href="authentication/logout" Match="NavLinkMatch.All" @onclick="BeginSignOut">
-                                    <span class="oi oi-account-logout" aria-hidden="true"></span> Log Out
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                </div>
-            </nav>
-
-        }
-    </Authorized>
-    <NotAuthorized>
-        <nav class="navbar navbar-expand-md navbar-light container">
-            <a class="navbar-brand logo" href="">Magnum Opus</a>
-            <hr />
-            <button class="navbar-toggler" @onclick="ToggleNavMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="@NavMenuCssClass navbar-collapse">
-                <ul class="navbar-nav ml-auto">
+    <div class="@NavMenuCssClass navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <AuthorizeView>
+                <Authorized> <!---->
                     <li class="nav-item mr-auto">
-                        <form action="">
+                        <form action="/">
                             <input class="search" type="text" placeholder="Enter item or restaurant &#xF002">
                             <input type="submit" hidden>
                         </form>
                     </li>
                     <li class="nav-item mr-auto">
-                        <NavLink class="btn btn-dark ml-2" href="authentication/login" Match="NavLinkMatch.All">
-                            Sign In
-                        </NavLink>
+                        <button class="button-signinout">
+                            <NavLink href="authentication/logout" Match="NavLinkMatch.All" @onclick="BeginSignOut">
+                                Log Out
+                            </NavLink>
+                        </button>                
                     </li>
-                </ul>
-            </div>
-        </nav>
-    </NotAuthorized>
-</AuthorizeView>
+                </Authorized>
+                <NotAuthorized>
+                    <li class="nav-item mr-auto">
+                        <form action="/">
+                            <input class="search" type="text" placeholder="Enter item or restaurant &#xF002">
+                            <input type="submit" hidden>
+                        </form>
+                    </li>
+                    <li class="nav-item mr-auto">
+                        <button class="button-signinout">
+                            <NavLink href="authentication/login" Match="NavLinkMatch.All">
+                                Sign In
+                            </NavLink>
+                        </button>
+                    </li>
+                </NotAuthorized>
+            </AuthorizeView>
+        </ul>
+    </div>
+</nav>
 
 @code {
     private bool collapseNavMenu = true;

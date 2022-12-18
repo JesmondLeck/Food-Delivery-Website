@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 
 namespace M.O.FoodDelivery.Server
@@ -35,19 +34,14 @@ namespace M.O.FoodDelivery.Server
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services
-                .AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddRoles<ApplicationRole>()
+                .AddIdentity<ApplicationUser, IdentityRole<int>>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole<int>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
             services.AddIdentityServer()
-            .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(opt =>
-            {
-                opt.IdentityResources["openid"].UserClaims.Add("role");
-                opt.ApiResources.Single().UserClaims.Add("role");
-            });
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
+                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();

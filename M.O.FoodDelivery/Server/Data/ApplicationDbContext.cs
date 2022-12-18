@@ -1,6 +1,7 @@
 ﻿using IdentityServer4.EntityFramework.Options;
 using M.O.FoodDelivery.Server.Configurations.Entities;
 using M.O.FoodDelivery.Server.Models;
+using M.O.FoodDelivery.Shared.Domain;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@ int>
             operationalStoreOptions)
         {
         }
-        //Users are stored in AspNet.Users
+        public DbSet<ApplicationUser> Userss { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
@@ -33,6 +34,7 @@ int>
         {
             base.OnModelCreating(builder);
 
+            builder.ApplyConfiguration(new ApplicationUserSeedConfiguration());
             builder.ApplyConfiguration(new RoleSeedConfiguration());
             builder.ApplyConfiguration(new UserRoleSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfiguration());
