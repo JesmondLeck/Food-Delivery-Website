@@ -10,8 +10,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace M.O.FoodDelivery.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
     [Migration("20221218113816_InitWithSeeds")]
     partial class InitWithSeeds
+========
+    [Migration("20221217041051_SeededAndModifyApplicationUser")]
+    partial class SeededAndModifyApplicationUser
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,11 +130,68 @@ namespace M.O.FoodDelivery.Server.Migrations
                 });
 
             modelBuilder.Entity("M.O.FoodDelivery.Server.Models.ApplicationRole", b =>
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
+========
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ConcurrencyStamp = "f0035284-48a4-429c-af93-5bb6c1c3a039",
+                            Name = "Owner",
+                            NormalizedName = "OWNER"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ConcurrencyStamp = "92202182-0caf-4f2e-9432-4aad2c9f682e",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        });
+                });
+
+            modelBuilder.Entity("M.O.FoodDelivery.Server.Models.ApplicationUser", b =>
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
+========
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -268,14 +330,19 @@ namespace M.O.FoodDelivery.Server.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             Address = "Tampines North Street 123 Blk 45 #6-759",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             ConcurrencyStamp = "74f5ab6d-b39e-4d43-9f1d-0387d11539e4",
                             CreatedBy = "System",
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 864, DateTimeKind.Local).AddTicks(3510),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 867, DateTimeKind.Local).AddTicks(3715),
+========
+                            ConcurrencyStamp = "0f85ff8e-02e1-4320-973a-dbcaa92fa685",
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             Email = "thomasdoe@gmail.com",
                             EmailConfirmed = false,
                             IC = "S8774367G",
                             LockoutEnabled = false,
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             Name = "Thomas",
                             NormalizedEmail = "THOMASDOE@GMAIL.COM",
                             NormalizedUserName = "THOMAS",
@@ -286,20 +353,31 @@ namespace M.O.FoodDelivery.Server.Migrations
                             TwoFactorEnabled = false,
                             UpdatedBy = "System",
                             UserName = "Thomas"
+========
+                            Name = "Thomas Doe",
+                            Password = "AQAAAAEAACcQAAAAECdPuIyvrncdIsh2E7yg7Pw9RpirixCU0NDERD+GJl7e6KDKaF+GgGU1WuBTO5D5+A==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                         },
                         new
                         {
                             Id = 2,
                             AccessFailedCount = 0,
                             Address = "113 Bedok North Street #5-102",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             ConcurrencyStamp = "ee7bd35c-412f-4a62-8c71-1fb9111e115e",
                             CreatedBy = "System",
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 869, DateTimeKind.Local).AddTicks(2316),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 869, DateTimeKind.Local).AddTicks(2331),
+========
+                            ConcurrencyStamp = "4046bc5e-e5e2-4568-948d-0945ffe5cbc4",
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             Email = "samlee@gmail.com",
                             EmailConfirmed = false,
                             IC = "S1234567F",
                             LockoutEnabled = false,
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             Name = "Samantha",
                             NormalizedEmail = "SAMLEE@GMAIL.COM",
                             NormalizedUserName = "SAMANTHA",
@@ -310,6 +388,12 @@ namespace M.O.FoodDelivery.Server.Migrations
                             TwoFactorEnabled = false,
                             UpdatedBy = "System",
                             UserName = "Samantha"
+========
+                            Name = "Samantha Lee",
+                            Password = "AQAAAAEAACcQAAAAELr+H0vmGrAl9KzWtJoARAuNI7ywt0UElxtJ9kAMneS0k7AUASzoziyMB3qga1rxiQ==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                         });
                 });
 
@@ -364,8 +448,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7256),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7267),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9423),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9427),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             Description = "Brunch: One meal to rule them all! Grab this mega saver combo with your choice of 2 veg wraps, Aloo Paratha (2 pcs), chole and Curd lunchbox and 2 choco lava cakes. This is just bliss on a plate!",
                             Name = "Brunch for 2 - Veg",
                             Options = "NIL",
@@ -378,8 +467,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7272),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7273),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9430),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9431),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             Description = "Juicy chicken mixed with curry and sausages.",
                             Name = "Royal Chicken Rice Bowl (Jumbo)",
                             Options = "NIL",
@@ -392,8 +486,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7275),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 871, DateTimeKind.Local).AddTicks(7277),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9433),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(9434),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             Name = "Paneer Signature Rice Bowl (Regular)",
                             Options = "NIL",
                             Price = 10.0,
@@ -444,8 +543,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(4739),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(4749),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(2644),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(2647),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             PaymentId = 1,
                             Status = "Preparation",
                             UpdatedBy = "System",
@@ -497,8 +601,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(1744),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(1752),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(2259),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(2288),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             DishId = 1,
                             OrderId = 1,
                             OrderQty = 1,
@@ -509,8 +618,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(1757),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(1758),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(2291),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(2292),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             DishId = 3,
                             OrderId = 1,
                             OrderQty = 1,
@@ -553,8 +667,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 869, DateTimeKind.Local).AddTicks(9019),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 869, DateTimeKind.Local).AddTicks(9254),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(396),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(401),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             PaidOn = new DateTime(2022, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Type = "Cashless",
                             UpdatedBy = "System"
@@ -607,8 +726,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                             Id = 1,
                             Address = "Tampines Mall #1-123",
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(9729),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(9738),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(5733),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(5738),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             Description = "North Indian, Punjabi",
                             Name = "LunchBox - Meals, Rice Bowls and Thalis",
                             OwnerId = 1,
@@ -619,8 +743,13 @@ namespace M.O.FoodDelivery.Server.Migrations
                             Id = 2,
                             Address = "Northpoint #2-123",
                             CreatedBy = "System",
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(9743),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 870, DateTimeKind.Local).AddTicks(9744),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(5741),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 706, DateTimeKind.Local).AddTicks(5742),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             Description = "Southern Indian",
                             Name = "Fasso - Wraps & Bowls",
                             OwnerId = 1,
@@ -673,14 +802,97 @@ namespace M.O.FoodDelivery.Server.Migrations
                             Id = 1,
                             CreatedBy = "System",
                             CustomerId = 2,
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                             DateCreated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(5714),
                             DateUpdated = new DateTime(2022, 12, 18, 19, 38, 15, 872, DateTimeKind.Local).AddTicks(5723),
+========
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(4636),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 707, DateTimeKind.Local).AddTicks(4641),
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                             IsFavorite = true,
                             RestaurantId = 1,
                             UpdatedBy = "System"
                         });
                 });
 
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
+========
+            modelBuilder.Entity("M.O.FoodDelivery.Shared.Domain.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfileImageUri")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Tampines North Street 123 Blk 45 #6-759",
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 700, DateTimeKind.Local).AddTicks(7496),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 704, DateTimeKind.Local).AddTicks(3236),
+                            Email = "thomasdoe@gmail.com",
+                            IC = "S8774367G",
+                            Name = "Thomas Doe",
+                            Password = "AQAAAAEAACcQAAAAEOlchVtE/F19OxA+MzLfzTDW+1NrNkr/GO1Tz5/RQO+p30YRbcxogIvUbi9LSWverw==",
+                            Role = "Owner",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "113 Bedok North Street #5-102",
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2022, 12, 17, 12, 10, 50, 705, DateTimeKind.Local).AddTicks(7728),
+                            DateUpdated = new DateTime(2022, 12, 17, 12, 10, 50, 705, DateTimeKind.Local).AddTicks(7732),
+                            Email = "samlee@gmail.com",
+                            IC = "S1234567F",
+                            Name = "Samantha Lee",
+                            Password = "AQAAAAEAACcQAAAAEPLKLZBsmI9T6YRTQHT9M2SdaQO/KmpBkJXmeSESLg2zQ4lZmNzIXxrK5fuLGsfXoA==",
+                            Role = "Customer",
+                            UpdatedBy = "System"
+                        });
+                });
+
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -854,18 +1066,29 @@ namespace M.O.FoodDelivery.Server.Migrations
 
             modelBuilder.Entity("M.O.FoodDelivery.Server.Models.Review", b =>
                 {
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                     b.HasOne("M.O.FoodDelivery.Server.Models.ApplicationUser", "Customer")
                         .WithMany("Reviews")
                         .HasForeignKey("CustomerId");
 
                     b.HasOne("M.O.FoodDelivery.Server.Models.Restaurant", "Restaurant")
+========
+                    b.HasOne("M.O.FoodDelivery.Shared.Domain.User", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("M.O.FoodDelivery.Shared.Domain.Restaurant", "Restaurant")
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                         .WithMany("Reviews")
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+<<<<<<<< HEAD:M.O.FoodDelivery/Server/Migrations/20221218113816_InitWithSeeds.Designer.cs
                     b.Navigation("Customer");
 
+========
+>>>>>>>> e01c4c1acb9a1b9cdd486245a004e5fb44fc983d:M.O.FoodDelivery/Server/Migrations/20221217041051_SeededAndModifyApplicationUser.Designer.cs
                     b.Navigation("Restaurant");
                 });
 

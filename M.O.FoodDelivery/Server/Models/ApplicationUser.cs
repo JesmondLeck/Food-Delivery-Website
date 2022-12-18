@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using M.O.FoodDelivery.Shared.Domain;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,3 +24,4 @@ namespace M.O.FoodDelivery.Server.Models
         public List<Order> Orders { get; set; }
     }
 }
+
